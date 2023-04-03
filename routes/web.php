@@ -22,6 +22,15 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::get('/', 'IndexController')->name('main.index');
   });
 
+  Route::name('posts.')->prefix('posts')->namespace('Post')->group(function () {
+    Route::get('/', 'IndexController')->name('index');
+    Route::get('/create', 'CreateController')->name('create');
+    Route::post('/', 'StoreController')->name('store');
+    Route::get('/{post}/edit', 'EditController')->name('edit');
+    Route::patch('/{post}', 'UpdateController')->name('update');
+    Route::delete('/{post}', 'DestroyController')->name('destroy');
+  });
+
   Route::name('categories.')->prefix('categories')->namespace('Category')->group(function () {
     Route::get('/', 'IndexController')->name('index');
     Route::get('/create', 'CreateController')->name('create');

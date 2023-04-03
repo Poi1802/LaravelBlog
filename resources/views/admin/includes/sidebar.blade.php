@@ -8,7 +8,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="{{ route('admin.main.index') }}" class="brand-link">
+  <a href="{{ route('admin.main.index') }}" class="brand-link text-decoration-none">
     <img src="{{ asset('dist/img/AdminLTELogo.png') }} " alt="AdminLTE Logo"
       class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">AdminLTE 3</span>
@@ -37,41 +37,7 @@
                 class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="#" class="d-block">Alexander Pierce</a>
-            </div>
-          </div>
-
-          <!-- SidebarSearch Form -->
-          <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-              <input class="form-control form-control-sidebar" type="search"
-                placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                  <i class="fas fa-search fa-fw"></i>
-                </button>
-              </div>
-            </div>
-            <div class="sidebar-search-results">
-              <div class="list-group"><a href="#" class="list-group-item">
-                  <div class="search-title"><strong class="text-light"></strong>N<strong
-                      class="text-light"></strong>o<strong class="text-light"></strong>
-                    <strong class="text-light"></strong>e<strong
-                      class="text-light"></strong>l<strong
-                      class="text-light"></strong>e<strong
-                      class="text-light"></strong>m<strong
-                      class="text-light"></strong>e<strong
-                      class="text-light"></strong>n<strong
-                      class="text-light"></strong>t<strong class="text-light"></strong>
-                    <strong class="text-light"></strong>f<strong
-                      class="text-light"></strong>o<strong
-                      class="text-light"></strong>u<strong
-                      class="text-light"></strong>n<strong
-                      class="text-light"></strong>d<strong
-                      class="text-light"></strong>!<strong class="text-light"></strong>
-                  </div>
-                  <div class="search-path"></div>
-                </a></div>
+              <a href="#" class="d-block text-decoration-none">Alexander Pierce</a>
             </div>
           </div>
 
@@ -81,10 +47,19 @@
               role="menu" data-accordion="false">
               <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-              <li class="nav-header">EXAMPLES</li>
+              <li class="nav-header">BLOG</li>
+              <li class="nav-item">
+                <a href="{{ route('admin.posts.index') }}" class="nav-link">
+                  <i class="nav-icon fa-solid fa-newspaper"></i>
+                  <p>
+                    Статьи
+                    <span class="badge badge-info right">{{ 2 }}</span>
+                  </p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="{{ route('admin.categories.index') }}" class="nav-link">
-                  <i class="nav-icon far fa-calendar-alt"></i>
+                  <i class="nav-icon fa-solid fa-table-list"></i>
                   <p>
                     Категории
                     <span class="badge badge-info right">{{ $catsCount }}</span>
@@ -93,7 +68,7 @@
               </li>
               <li class="nav-item">
                 <a href="{{ route('admin.tags.index') }}" class="nav-link">
-                  <i class="nav-icon far fa-calendar-alt"></i>
+                  <i class="nav-icon fa-solid fa-tags"></i>
                   <p>
                     Теги
                     <span class="badge badge-info right">{{ $tagsCount }}</span>
