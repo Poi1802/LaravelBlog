@@ -21,6 +21,9 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
   Route::group(['namespace' => 'Main'], function () {
     Route::get('/', 'IndexController')->name('main.index');
   });
+  Route::group(['namespace' => 'Category'], function () {
+    Route::get('/categories', 'IndexController')->name('main.index');
+  });
 });
 
 Auth::routes();
