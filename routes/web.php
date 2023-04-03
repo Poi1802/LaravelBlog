@@ -13,8 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
+Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
+  Route::get('/', 'IndexController')->name('main.index');
+});
+
+Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function () {
+  Route::group(['namespace' => 'Main'], function () {
+    Route::get('/', 'IndexController')->name('main.index');
+  });
 });
 
 Auth::routes();
