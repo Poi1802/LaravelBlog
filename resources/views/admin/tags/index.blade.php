@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Категории</h1>
+            <h1 class="m-0">Теги</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -27,8 +27,8 @@
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-md-2">
-            <a href="{{ route('admin.categories.create') }}" class="btn btn-info">Добавить
-              категорию</a>
+            <a href="{{ route('admin.tags.create') }}" class="btn btn-info">Добавить
+              новый тег</a>
           </div>
         </div>
         <!-- /.row -->
@@ -40,23 +40,22 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">ID</th>
-                      <th>Категория</th>
+                      <th>Название тега</th>
                       <th style="width: 23%" class="text-center">Управление</th>
                     </tr>
                   </thead>
-                  @foreach ($categories as $category)
+                  @foreach ($tags as $tag)
                     <tbody>
                       <tr>
-                        <td>{{ $category->id }}.</td>
-                        <td>{{ $category->name }}</td>
+                        <td>{{ $tag->id }}.</td>
+                        <td>{{ $tag->name }}</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <a href="{{ route('admin.categories.edit', $category->id) }}"
+                            <a href="{{ route('admin.tags.edit', $tag->id) }}"
                               class="mr-3 edit_pen" style="font-size: 20px">
                               <i class="fa-regular fa-pen-to-square"></i>
                             </a>
-                            <form
-                              action="{{ route('admin.categories.destroy', $category->id) }}"
+                            <form action="{{ route('admin.tags.destroy', $tag->id) }}"
                               method="post">
                               @csrf
                               @method('delete')

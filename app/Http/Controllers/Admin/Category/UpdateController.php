@@ -14,6 +14,6 @@ class UpdateController extends Controller
 
     $category->update($data);
 
-    return to_route('admin.category.index');
+    return to_route('admin.categories.index');
   }
 }

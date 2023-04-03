@@ -21,13 +21,23 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
   Route::group(['namespace' => 'Main'], function () {
     Route::get('/', 'IndexController')->name('main.index');
   });
-  Route::group(['namespace' => 'Category'], function () {
-    Route::get('/categories', 'IndexController')->name('category.index');
-    Route::get('/categories/create', 'CreateController')->name('category.create');
-    Route::post('/categories', 'StoreController')->name('category.store');
-    Route::get('/categories/{category}/edit', 'EditController')->name('category.edit');
-    Route::patch('/categories/{category}', 'UpdateController')->name('category.update');
-    Route::delete('/categories/{category}', 'DestroyController')->name('category.destroy');
+
+  Route::name('categories.')->prefix('categories')->namespace('Category')->group(function () {
+    Route::get('/', 'IndexController')->name('index');
+    Route::get('/create', 'CreateController')->name('create');
+    Route::post('/', 'StoreController')->name('store');
+    Route::get('/{category}/edit', 'EditController')->name('edit');
+    Route::patch('/{category}', 'UpdateController')->name('update');
+    Route::delete('/{category}', 'DestroyController')->name('destroy');
+  });
+
+  Route::name('tags.')->prefix('tags')->namespace('Tag')->group(function () {
+    Route::get('/', 'IndexController')->name('index');
+    Route::get('/create', 'CreateController')->name('create');
+    Route::post('/', 'StoreController')->name('store');
+    Route::get('/{tag}/edit', 'EditController')->name('edit');
+    Route::patch('/{tag}', 'UpdateController')->name('update');
+    Route::delete('/{tag}', 'DestroyController')->name('destroy');
   });
 });
 

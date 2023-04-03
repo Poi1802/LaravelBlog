@@ -33,7 +33,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ route('admin.category.update', $category->id) }}"
+              <form action="{{ route('admin.categories.update', $category->id) }}"
                 method="post" class="form-horizontal">
                 @csrf
                 @method('patch')
@@ -57,7 +57,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">Изменить</button>
-                  <a href="{{ route('admin.category.index') }}"
+                  <a href="{{ route('admin.categories.index') }}"
                     class="btn btn-default float-right">Назад</a>
                 </div>
                 <!-- /.card-footer -->

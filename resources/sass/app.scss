@@ -1,8 +1,19 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url("https://fonts.bunny.net/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
+
+.trash {
+    i {
+        transition: 0.2s ease-in-out;
+    }
+    &:hover {
+        i {
+            color: rgb(237, 22, 22);
+        }
+    }
+}

@@ -22,6 +22,8 @@
   <!-- Daterange picker -->
   <link rel="stylesheet"
     href="{{ asset('plugins/daterangepicker/daterangepicker.css') }} ">
+  <!-- Scripts -->
+  @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -79,6 +81,7 @@
   </script>
   <!-- AdminLTE App -->
   <script src="{{ asset('dist/js/adminlte.js') }} "></script>
+  <script src="https://kit.fontawesome.com/0b50121546.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

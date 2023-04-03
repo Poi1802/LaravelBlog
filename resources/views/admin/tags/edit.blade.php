@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Добавление категории</h1>
+            <h1 class="m-0">Изменение тега</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -33,9 +33,10 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ route('admin.categories.store') }}" method="post"
+              <form action="{{ route('admin.tags.update', $tag->id) }}" method="post"
                 class="form-horizontal">
                 @csrf
+                @method('patch')
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="inputEmail3"
@@ -44,7 +45,8 @@
                       <div>
                         <input type="text"
                           class="form-control @error('name') border-danger @enderror"
-                          name="name" id="inputEmail3" placeholder="Название категории">
+                          name="name" id="inputEmail3" value="{{ $tag->name }}"
+                          placeholder="Название тега">
                       </div>
                       @error('name')
                         <div class="text-danger">Обзательное поле</div>
@@ -54,8 +56,8 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-info">Добавить</button>
-                  <a href="{{ route('admin.categories.index') }}"
+                  <button type="submit" class="btn btn-info">Изменить</button>
+                  <a href="{{ route('admin.tags.index') }}"
                     class="btn btn-default float-right">Назад</a>
                 </div>
                 <!-- /.card-footer -->

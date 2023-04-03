@@ -12,6 +12,6 @@ class DestroyController extends Controller
   {
     $category->delete();
 
-    return to_route('admin.category.index');
+    return to_route('admin.categories.index');
   }
 }
