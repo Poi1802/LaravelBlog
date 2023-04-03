@@ -22,7 +22,12 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::get('/', 'IndexController')->name('main.index');
   });
   Route::group(['namespace' => 'Category'], function () {
-    Route::get('/categories', 'IndexController')->name('main.index');
+    Route::get('/categories', 'IndexController')->name('category.index');
+    Route::get('/categories/create', 'CreateController')->name('category.create');
+    Route::post('/categories', 'StoreController')->name('category.store');
+    Route::get('/categories/{category}/edit', 'EditController')->name('category.edit');
+    Route::patch('/categories/{category}', 'UpdateController')->name('category.update');
+    Route::delete('/categories/{category}', 'DestroyController')->name('category.destroy');
   });
 });
 
