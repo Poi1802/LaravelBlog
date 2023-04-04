@@ -17,7 +17,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
   Route::get('/', 'IndexController')->name('main.index');
 });
 
-Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')->group(function () {
+Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware(['auth', 'admin'])->group(function () {
   Route::group(['namespace' => 'Main'], function () {
     Route::get('/', 'IndexController')->name('main.index');
   });
@@ -30,6 +30,15 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
     Route::get('/{post}/edit', 'EditController')->name('edit');
     Route::patch('/{post}', 'UpdateController')->name('update');
     Route::delete('/{post}', 'DestroyController')->name('destroy');
+  });
+
+  Route::name('users.')->prefix('users')->namespace('User')->group(function () {
+    Route::get('/', 'IndexController')->name('index');
+    Route::get('/create', 'CreateController')->name('create');
+    Route::post('/', 'StoreController')->name('store');
+    Route::get('/{user}/edit', 'EditController')->name('edit');
+    Route::patch('/{user}', 'UpdateController')->name('update');
+    Route::delete('/{user}', 'DestroyController')->name('destroy');
   });
 
   Route::name('categories.')->prefix('categories')->namespace('Category')->group(function () {

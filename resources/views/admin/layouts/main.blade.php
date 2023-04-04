@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Admin EugenBlog</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -42,12 +42,17 @@
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="" role="button"><i
-              class="fas fa-bars"></i></a>
-        </li>
-      </ul>
+      <div class="col-12">
+        <ul class="navbar-nav d-flex justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="" role="button"><i
+                class="fas fa-bars"></i></a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="btn btn-outline-danger" href="{{ route('main.index') }}">Выход</a>
+          </li>
+        </ul>
+      </div>
     </nav>
     <!-- /.navbar -->
 

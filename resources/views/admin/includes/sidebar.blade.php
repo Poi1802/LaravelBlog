@@ -1,9 +1,10 @@
 @php
-  use App\Models\{Category, Tag, Post};
+  use App\Models\{Category, Tag, Post, User};
   
   $catsCount = Category::count();
   $tagsCount = Tag::count();
   $postsCount = Post::count();
+  $usersCount = User::count();
 @endphp
 
 <!-- Main Sidebar Container -->
@@ -12,7 +13,7 @@
   <a href="{{ route('admin.main.index') }}" class="brand-link text-decoration-none">
     <img src="{{ asset('dist/img/AdminLTELogo.png') }} " alt="AdminLTE Logo"
       class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <span class="brand-text font-weight-light">Admin EugenBlog</span>
   </a>
 
   <!-- Sidebar -->
@@ -55,6 +56,15 @@
                   <p>
                     Статьи
                     <span class="badge badge-info right">{{ $postsCount }}</span>
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.users.index') }}" class="nav-link">
+                  <i class="nav-icon fa-solid fa-users"></i>
+                  <p>
+                    Пользователи
+                    <span class="badge badge-info right">{{ $usersCount }}</span>
                   </p>
                 </a>
               </li>
