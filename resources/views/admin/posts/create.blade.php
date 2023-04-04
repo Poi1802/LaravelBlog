@@ -33,16 +33,17 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ route('admin.posts.store') }}" method="post" class="form">
+              <form action="{{ route('admin.posts.store') }}" method="post"
+                enctype="multipart/form-data" class="form">
                 @csrf
                 <div class="card-body">
                   <div class="form-group d-flex">
-                    <div class="title col-sm-4 ">
+                    <div class="title col-sm-4">
                       <label>Название</label>
                       @error('title')
                         <label class="text-danger"> - это обзательное поле</label>
                       @enderror
-                      <div class="col-sm-12">
+                      <div class="">
                         <div>
                           <input type="text"
                             class="form-control @error('title') border-danger @enderror"
@@ -86,7 +87,47 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group d-flex">
+                    <div class="preview-img col-4">
+                      <label for="exampleInputFile">Превью</label>
+                      @error('preview_img')
+                        <label class="text-danger"> - это обязательное поле</label>
+                      @enderror
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file"
+                            accept="image/gif,image/png,image/jpeg,image/pjpeg,image/heic"
+                            class="custom-file-input" name="preview_img"
+                            value="{{ old('preview_img') }}" id="exampleInputFile">
+                          <label class="custom-file-label" for="exampleInputFile">Выберите
+                            файл</label>
+                        </div>
+                        <div class="input-group-append">
+                          <span class="input-group-text">Загрузить</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="main-img col-4">
+                      <label for="exampleInputFile">Главное изображение</label>
+                      @error('main_img')
+                        <label class="text-danger"> - это обязательное поле</label>
+                      @enderror
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file"
+                            accept="image/gif,image/png,image/jpeg,image/pjpeg,image/heic"
+                            class="custom-file-input" name="main_img"
+                            value="{{ old('main_img') }}" id="exampleInputFile">
+                          <label class="custom-file-label" for="exampleInputFile">Выберите
+                            файл</label>
+                        </div>
+                        <div class="input-group-append">
+                          <span class="input-group-text">Загрузить</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group col-12">
                     <label for="inputEmail3" class="col-form-label">Содержание
                       статьи</label>
                     @error('content')

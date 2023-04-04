@@ -1,8 +1,9 @@
 @php
-  use App\Models\{Category, Tag};
+  use App\Models\{Category, Tag, Post};
   
   $catsCount = Category::count();
   $tagsCount = Tag::count();
+  $postsCount = Post::count();
 @endphp
 
 <!-- Main Sidebar Container -->
@@ -53,7 +54,7 @@
                   <i class="nav-icon fa-solid fa-newspaper"></i>
                   <p>
                     Статьи
-                    <span class="badge badge-info right">{{ 2 }}</span>
+                    <span class="badge badge-info right">{{ $postsCount }}</span>
                   </p>
                 </a>
               </li>
