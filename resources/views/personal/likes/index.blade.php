@@ -41,6 +41,7 @@
                       <th style="width: 23%" class="text-center">Управление</th>
                     </tr>
                   </thead>
+                  {{-- @dd($postLikes) --}}
                   @foreach ($likedPosts as $post)
                     <tbody>
                       <tr>
