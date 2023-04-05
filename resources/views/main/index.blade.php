@@ -6,7 +6,7 @@
       <h1 class="edica-page-title" data-aos="fade-up">Blog</h1>
       <section class="featured-posts-section">
         <div class="row">
-          @foreach ($posts as $post)
+          @foreach ($postsMain as $post)
             <div class="col-md-4 fetured-post blog-post" data-aos="fade-right">
               <div class="blog-post-thumbnail-wrapper">
                 <a href="">
@@ -33,7 +33,7 @@
         <div class="col-md-8">
           <section>
             <div class="row blog-post-row">
-              @foreach ($posts->random(6) as $post)
+              @foreach ($postsRandom->random(6) as $post)
                 <div class="col-md-6 blog-post" data-aos="fade-up">
                   <div class="blog-post-thumbnail-wrapper">
                     <a href="">

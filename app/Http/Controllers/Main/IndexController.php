@@ -10,8 +10,9 @@ class IndexController extends Controller
 {
   public function __invoke()
   {
-    $posts = Post::paginate(6);
+    $postsMain = Post::paginate(3);
+    $postsRandom = Post::all()->diff($postsMain);
 
-    return view('main.index', compact('posts'));
+    return view('main.index', compact('postsMain', 'postsRandom'));
   }
 }
