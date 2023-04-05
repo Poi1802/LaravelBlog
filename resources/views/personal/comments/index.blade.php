@@ -1,0 +1,105 @@
+@extends('admin.layouts.main')
+@php
+  use App\Models\User;
+@endphp
+@section('content')
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Пользователи</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a
+                  href="{{ route('admin.main.index') }}">Административная панель</a></li>
+              <li class="breadcrumb-item active">Пользователи</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-md-2">
+            <a href="{{ route('admin.users.create') }}" class="btn btn-info">Добавить
+              нового пользователя</a>
+          </div>
+        </div>
+        <!-- /.row -->
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <table class="table table-bordered ">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">ID</th>
+                      <th>Имя</th>
+                      <th>Email</th>
+                      <th>Роль</th>
+                      <th style="width: 23%" class="text-center">Управление</th>
+                    </tr>
+                  </thead>
+                  @foreach ($users as $user)
+                    <tbody>
+                      <tr>
+                        <td>{{ $user->id }}.</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>
+                          @foreach (User::getRoles() as $id => $role)
+                            @if ($user->role == $id)
+                              {{ $role }}
+                            @endif
+                          @endforeach
+                        </td>
+                        <td>
+                          <div class="d-flex justify-content-center">
+                            <a href="{{ route('admin.users.edit', $user->id) }}"
+                              class="mr-3 edit_pen" style="font-size: 20px">
+                              <i class="fa-regular fa-pen-to-square"></i>
+                            </a>
+                            <form action="{{ route('admin.users.destroy', $user->id) }}"
+                              method="post">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="border-0 bg-white trash"
+                                style="font-size: 20px;">
+                                <i class="fa-solid fa-trash-can"></i>
+                              </button>
+                            </form>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  @endforeach
+                </table>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">«</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">»</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+@endsection

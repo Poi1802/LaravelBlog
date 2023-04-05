@@ -75,7 +75,12 @@
                   data-toggle="dropdown" aria-haspopup="true"
                   aria-expanded="false">{{ Auth::user()->name }}</a>
                 <div class="dropdown-menu" aria-labelledby="blogDropdown">
-                  <a class="dropdown-item" href="{{ route('admin.main.index') }}">Админ
+                  @if (Auth::user()->isAdmin())
+                    <a class="dropdown-item" href="{{ route('admin.main.index') }}">Админ
+                      панель</a>
+                  @endif
+                  <a class="dropdown-item"
+                    href="{{ route('personal.main.index') }}">Персональная
                     панель</a>
                   <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
