@@ -1,3 +1,15 @@
+@php
+  $postsCount = Auth::user()
+      ->posts()
+      ->count();
+  $commentsCount = Auth::user()
+      ->userComments()
+      ->count();
+  $likesCount = Auth::user()
+      ->likedPosts()
+      ->count();
+@endphp
+
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
@@ -47,7 +59,7 @@
                   <i class="nav-icon fa-solid fa-newspaper"></i>
                   <p>
                     Посты
-                    <span class="badge badge-info right">{{ 10 }}</span>
+                    <span class="badge badge-info right">{{ $postsCount }}</span>
                   </p>
                 </a>
               </li>
@@ -56,7 +68,7 @@
                   <i class="nav-icon fa-solid fa-comments"></i>
                   <p>
                     Комментарии
-                    <span class="badge badge-info right">{{ 10 }}</span>
+                    <span class="badge badge-info right">{{ $commentsCount }}</span>
                   </p>
                 </a>
               </li>
@@ -66,7 +78,7 @@
                   <p>
                     Лайки постам
                   </p>
-                  <span class="badge badge-info right">{{ 10 }}</span>
+                  <span class="badge badge-info right">{{ $likesCount }}</span>
                 </a>
               </li>
             </ul>

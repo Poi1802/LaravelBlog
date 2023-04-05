@@ -30,15 +30,15 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ 10 }}</h3>
+                <h3>{{ $postsCount }}</h3>
 
                 <p>Статьи</p>
               </div>
               <div class="icon">
                 <i class="ion fa-solid fa-newspaper"></i>
               </div>
-              <a href="{{ route('admin.posts.index') }}" class="small-box-footer">Перейти <i
-                  class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ route('personal.posts.index') }}" class="small-box-footer">Перейти
+                <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -46,14 +46,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{ 10 }}</h3>
+                <h3>{{ $commentsCount }}</h3>
 
                 <p>Комментарии</p>
               </div>
               <div class="icon">
                 <i class="ion fa-solid fa-comments"></i>
               </div>
-              <a href="{{ route('admin.categories.index') }}"
+              <a href="{{ route('personal.comments.index') }}"
                 class="small-box-footer">Перейти <i
                   class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -63,13 +63,13 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>{{ 10 }}</h3>
+                <h3>{{ $likesCount }}</h3>
                 <p>Лайки постам</p>
               </div>
               <div class="icon">
                 <i class="ion fa-solid fa-heart"></i>
               </div>
-              <a href="{{ route('admin.tags.index') }}" class="small-box-footer">Перейти
+              <a href="{{ route('personal.likes.index') }}" class="small-box-footer">Перейти
                 <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
