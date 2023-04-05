@@ -9,13 +9,17 @@
           @foreach ($posts as $post)
             <div class="col-md-4 fetured-post blog-post" data-aos="fade-right">
               <div class="blog-post-thumbnail-wrapper">
-                <img src="{{ asset($post->preview_img) }}" alt="blog post">
+                <a href="">
+                  <img src="{{ asset($post->preview_img) }}" alt="blog post">
+                </a>
               </div>
               <div class="d-flex justify-content-between">
-                <p class="blog-post-category">{{ $post->category->name }}</p>
+                <a href="" class="blog-post-category">{{ $post->category->name }}</a>
                 <div class="likes">
                   {{ $post->likes->count() }}
-                  <i class="far fa-heart"></i>
+                  <a href="" class="text-danger">
+                    <i class="far fa-heart"></i>
+                  </a>
                 </div>
               </div>
               <a href="{{ route('main.show', $post->id) }}" class="blog-post-permalink">
@@ -32,13 +36,18 @@
               @foreach ($posts->random(6) as $post)
                 <div class="col-md-6 blog-post" data-aos="fade-up">
                   <div class="blog-post-thumbnail-wrapper">
-                    <img src="{{ asset($post->preview_img) }}" alt="blog post">
+                    <a href="">
+                      <img src="{{ asset($post->preview_img) }}" alt="blog post">
+                    </a>
                   </div>
                   <div class="d-flex justify-content-between">
-                    <p class="blog-post-category">{{ $post->category->name }}</p>
+                    <a href=""
+                      class="blog-post-category">{{ $post->category->name }}</a>
                     <div class="likes">
                       {{ $post->likes->count() }}
-                      <i class="far fa-heart"></i>
+                      <a href="" class="text-danger">
+                        <i class="far fa-heart"></i>
+                      </a>
                     </div>
                   </div>
                   <a href="#!" class="blog-post-permalink">
