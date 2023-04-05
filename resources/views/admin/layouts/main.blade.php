@@ -44,13 +44,38 @@
       <!-- Left navbar links -->
       <div class="col-12">
         <ul class="navbar-nav d-flex justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="" role="button"><i
-                class="fas fa-bars"></i></a>
-          </li>
-          <li class="nav-item mr-3">
-            <a class="btn btn-outline-danger" href="{{ route('main.index') }}">Выход</a>
-          </li>
+          <div class="right-nav d-flex">
+            <li class="nav-item">
+              <a class="nav-link" data-widget="pushmenu" href="" role="button"><i
+                  class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('main.index') }}">На
+                главную</a>
+            </li>
+          </div>
+          <!-- Right Side Of Navbar -->
+          <ul class="navbar-nav mr-4">
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false" v-pre>
+                {{ Auth::user()->name }}
+              </a>
+              <div class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdown">
+                <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                  {{ __('Выйти из аккаунта') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                  class="d-none">
+                  @csrf
+                </form>
+              </div>
+            </li>
+          </ul>
         </ul>
       </div>
     </nav>

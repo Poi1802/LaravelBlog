@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }} ">
   <script src="{{ asset('assets/vendors/jquery/jquery.min.js') }} "></script>
   <script src="{{ asset('assets/js/loader.js') }} "></script>
+
+  @vite(['resources/sass/app.sass', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -20,7 +22,7 @@
   <header class="edica-header">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="index.html"><img
+        <a class="navbar-brand" href="{{ route('main.index') }}"><img
             src="{{ asset('assets/images/logo.svg') }} " alt="Edica"></a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
           data-target="#edicaMainNav" aria-controls="collapsibleNavId"
@@ -30,7 +32,7 @@
         <div class="collapse navbar-collapse" id="edicaMainNav">
           <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span
+              <a class="nav-link" href="{{ route('main.index') }}">Home<span
                   class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -57,16 +59,36 @@
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
-          <ul class="navbar-nav mt-2 mt-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span
-                  class="flag-icon flag-icon-squared rounded-circle flag-icon-gb"></span>
-                Eng</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Download</a>
-            </li>
-          </ul>
+          @if (!Auth::user())
+            <ul class="navbar-nav mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">Войти</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">Зарегестрироваться</a>
+              </li>
+            </ul>
+          @else
+            <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="blogDropdown"
+                  data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">{{ Auth::user()->name }}</a>
+                <div class="dropdown-menu" aria-labelledby="blogDropdown">
+                  <a class="dropdown-item" href="{{ route('admin.main.index') }}">Админ
+                    панель</a>
+                  <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Выйти из аккаунта') }}
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                    class="d-none">
+                    @csrf
+                  </form>
+                </div>
+              </li>
+            </ul>
+          @endif
         </div>
       </nav>
     </div>
