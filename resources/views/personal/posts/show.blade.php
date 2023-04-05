@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
@@ -14,9 +14,9 @@
             <ol class="breadcrumb float-sm-right">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a
-                    href="{{ route('admin.main.index') }}">Административная панель</a></li>
+                    href="{{ route('personal.main.index') }}">Персональная панель</a></li>
                 <li class="breadcrumb-item active"><a
-                    href="{{ route('admin.posts.index') }}">Статьи</a></li>
+                    href="{{ route('personal.posts.index') }}">Статьи</a></li>
                 <li class="breadcrumb-item active">Статья: {{ $post->title }}</li>
               </ol>
             </ol>
@@ -32,11 +32,12 @@
         <!-- Small boxes (Stat box) -->
         <div class="d-flex">
           <div class="">
-            <a href="{{ route('admin.posts.create') }}" class="btn btn-info">Добавить
+            <a href="{{ route('personal.posts.create') }}" class="btn btn-info">Добавить
               статью</a>
           </div>
           <div class="col-1">
-            <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Назад</a>
+            <a href="{{ route('personal.posts.index') }}"
+              class="btn btn-secondary">Назад</a>
           </div>
         </div>
         <!-- /.row -->
@@ -66,15 +67,15 @@
                       </td>
                       <td>
                         <div class="d-flex justify-content-center">
-                          <a href="{{ route('admin.posts.show', $post->id) }}"
+                          <a href="{{ route('personal.posts.show', $post->id) }}"
                             class="mr-4 edit_pen" style="font-size: 20px">
                             <i class="fa-regular fa-eye"></i>
                           </a>
-                          <a href="{{ route('admin.posts.edit', $post->id) }}"
+                          <a href="{{ route('personal.posts.edit', $post->id) }}"
                             class="mr-4 edit_pen" style="font-size: 20px">
                             <i class="fa-regular fa-pen-to-square"></i>
                           </a>
-                          <form action="{{ route('admin.posts.destroy', $post->id) }}"
+                          <form action="{{ route('personal.posts.destroy', $post->id) }}"
                             method="post">
                             @csrf
                             @method('delete')

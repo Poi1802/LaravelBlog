@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Personal\Post;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
   public function __invoke()
   {
-    return view('personal.posts.index');
+    $posts = Auth::user()->posts;
+
+    return view('personal.posts.index', compact('posts'));
   }
 }

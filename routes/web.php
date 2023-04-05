@@ -24,6 +24,12 @@ Route::name('personal.')->prefix('personal')->namespace('App\Http\Controllers\Pe
 
   Route::name('posts.')->prefix('posts')->namespace('Post')->group(function () {
     Route::get('/', 'IndexController')->name('index');
+    Route::get('/create', 'CreateController')->name('create');
+    Route::post('/', 'StoreController')->name('store');
+    Route::get('/{post}', 'ShowController')->name('show');
+    Route::get('/{post}/edit', 'EditController')->name('edit');
+    Route::patch('/{post}', 'UpdateController')->name('update');
+    Route::delete('/{post}', 'DestroyController')->name('destroy');
   });
 
   Route::name('comments.')->prefix('comments')->namespace('Comment')->group(function () {

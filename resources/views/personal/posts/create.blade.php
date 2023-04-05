@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
@@ -13,9 +13,9 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a
-                  href="{{ route('admin.main.index') }}">Административная панель</a></li>
+                  href="{{ route('personal.main.index') }}">Персональная панель</a></li>
               <li class="breadcrumb-item active"><a
-                  href="{{ route('admin.posts.index') }}">Статьи</a></li>
+                  href="{{ route('personal.posts.index') }}">Статьи</a></li>
               <li class="breadcrumb-item active">Добавление статьи</li>
             </ol>
           </div><!-- /.col -->
@@ -36,9 +36,10 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ route('admin.posts.store') }}" method="post"
+              <form action="{{ route('personal.posts.store') }}" method="post"
                 enctype="multipart/form-data" class="form">
                 @csrf
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <div class="card-body">
                   <div class="form-group d-flex">
                     <div class="title col-sm-4">
@@ -142,7 +143,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">Добавить</button>
-                  <a href="{{ route('admin.posts.index') }}"
+                  <a href="{{ route('personal.posts.index') }}"
                     class="btn btn-default float-right">Назад</a>
                 </div>
                 <!-- /.card-footer -->

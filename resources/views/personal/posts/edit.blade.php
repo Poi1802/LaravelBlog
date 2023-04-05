@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
@@ -13,9 +13,9 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a
-                  href="{{ route('admin.main.index') }}">Административная панель</a></li>
+                  href="{{ route('personal.main.index') }}">Персональная панель</a></li>
               <li class="breadcrumb-item active"><a
-                  href="{{ route('admin.posts.index') }}">Статьи</a></li>
+                  href="{{ route('personal.posts.index') }}">Статьи</a></li>
               <li class="breadcrumb-item active">Изменение статьи: {{ $post->title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -36,7 +36,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ route('admin.posts.update', $post->id) }}"
+              <form action="{{ route('personal.posts.update', $post->id) }}"
                 enctype="multipart/form-data" method="post" class="form-horizontal">
                 @csrf
                 @method('patch')
@@ -166,7 +166,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">Изменить</button>
-                  <a href="{{ route('admin.posts.index') }}"
+                  <a href="{{ route('personal.posts.index') }}"
                     class="btn btn-default float-right">Назад</a>
                 </div>
                 <!-- /.card-footer -->

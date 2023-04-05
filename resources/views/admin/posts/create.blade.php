@@ -39,6 +39,7 @@
               <form action="{{ route('admin.posts.store') }}" method="post"
                 enctype="multipart/form-data" class="form">
                 @csrf
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <div class="card-body">
                   <div class="form-group d-flex">
                     <div class="title col-sm-4">
