@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  protected $table = 'comments';
+  protected $guarded = false;
+
+  public function post()
+  {
+    return $this->belongsTo(Post::class, 'post_id', 'id');
+  }
 }

@@ -28,6 +28,9 @@ Route::name('personal.')->prefix('personal')->namespace('App\Http\Controllers\Pe
 
   Route::name('comments.')->prefix('comments')->namespace('Comment')->group(function () {
     Route::get('/', 'IndexController')->name('index');
+    Route::get('/{comment}/edit', 'EditController')->name('edit');
+    Route::patch('/{comment}', 'UpdateController')->name('update');
+    Route::delete('/{comment}', 'DestroyController')->name('destroy');
   });
 
   Route::name('likes.')->prefix('likes')->namespace('Like')->group(function () {

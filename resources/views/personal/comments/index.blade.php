@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 @php
   use App\Models\User;
 @endphp
@@ -10,13 +10,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Пользователи</h1>
+            <h1 class="m-0">Комментарии</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a
-                  href="{{ route('admin.main.index') }}">Административная панель</a></li>
-              <li class="breadcrumb-item active">Пользователи</li>
+                  href="{{ route('personal.main.index') }}">Персональная панель</a></li>
+              <li class="breadcrumb-item active">Комментарии</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,13 +28,6 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-md-2">
-            <a href="{{ route('admin.users.create') }}" class="btn btn-info">Добавить
-              нового пользователя</a>
-          </div>
-        </div>
-        <!-- /.row -->
         <div class="row mt-3">
           <div class="col-md-6">
             <div class="card">
@@ -43,32 +36,28 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">ID</th>
-                      <th>Имя</th>
-                      <th>Email</th>
-                      <th>Роль</th>
+                      <th>Название поста</th>
+                      <th>Комментарий</th>
                       <th style="width: 23%" class="text-center">Управление</th>
                     </tr>
                   </thead>
-                  @foreach ($users as $user)
+                  @foreach ($userComments as $comment)
                     <tbody>
                       <tr>
-                        <td>{{ $user->id }}.</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>
-                          @foreach (User::getRoles() as $id => $role)
-                            @if ($user->role == $id)
-                              {{ $role }}
-                            @endif
-                          @endforeach
-                        </td>
+                        <td>{{ $comment->id }}.</td>
+                        <td>{{ $comment->post->title }}</td>
+                        <td>{{ $comment->comment }}</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <a href="{{ route('admin.users.edit', $user->id) }}"
+                            <a href="" class="mr-4 edit_pen" style="font-size: 20px">
+                              <i class="fa-regular fa-eye"></i>
+                            </a>
+                            <a href="{{ route('personal.comments.edit', $comment->id) }}"
                               class="mr-3 edit_pen" style="font-size: 20px">
                               <i class="fa-regular fa-pen-to-square"></i>
                             </a>
-                            <form action="{{ route('admin.users.destroy', $user->id) }}"
+                            <form
+                              action="{{ route('personal.comments.destroy', $comment->id) }}"
                               method="post">
                               @csrf
                               @method('delete')

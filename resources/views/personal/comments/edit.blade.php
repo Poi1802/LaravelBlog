@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 
 @section('content')
   <!-- Content Wrapper. Contains page content -->
@@ -8,16 +8,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Изменение пользователя</h1>
+            <h1 class="m-0">Изменение комментария</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a
-                  href="{{ route('admin.main.index') }}">Административная панель</a></li>
+                  href="{{ route('personal.main.index') }}">Персональная панель</a></li>
               <li class="breadcrumb-item active"><a
-                  href="{{ route('admin.users.index') }}">Пользователи</a></li>
-              <li class="breadcrumb-item active">Измение пользователя: {{ $user->name }}
-              </li>
+                  href="{{ route('personal.comments.index') }}">Комментарии</a></li>
+              <li class="breadcrumb-item active">Измение комментария </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -37,80 +36,34 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{ route('admin.users.update', $user->id) }}" method="post"
-                class="form-horizontal">
+              <form action="{{ route('personal.comments.update', $comment->id) }}"
+                method="post" class="form-horizontal">
                 @csrf
                 @method('patch')
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-1 col-form-label">Имя</label>
+                    <label for="inputEmail3"
+                      class="col-12 col-form-label">Комментарий</label>
                     <div class="col-sm-10">
                       <div>
                         <input type="text"
-                          class="form-control @error('name') border-danger @enderror"
-                          name="name" id="inputEmail3"
-                          value="{{ old('name') ?? $user->name }}"
-                          placeholder="Имя пользователя">
+                          class="form-control @error('comment') border-danger @enderror"
+                          name="comment" id="inputEmail3"
+                          value="{{ old('comment') ?? $comment->comment }}"
+                          placeholder="Комментарий">
                       </div>
                       @error('name')
                         <div class="text-danger">{{ $message }}</div>
                       @enderror
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-1 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                      <div>
-                        <input type="text"
-                          class="form-control @error('email') border-danger @enderror"
-                          name="email" value="{{ old('email') ?? $user->email }}"
-                          id="inputEmail3" placeholder="Email пользователя">
-                      </div>
-                      @error('email')
-                        <div class="text-danger">{{ $message }}</div>
-                      @enderror
-                    </div>
+                  <!-- /.card-body -->
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-info">Изменить</button>
+                    <a href="{{ route('personal.comments.index') }}"
+                      class="btn btn-default float-right">Назад</a>
                   </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-12 form-label">Новый пароль(если
-                      нужно)</label>
-                    <div class="col-sm-10">
-                      <div>
-                        <input type="text"
-                          class="form-control @error('password') border-danger @enderror"
-                          name="password" value="{{ old('password') }}" id="inputEmail3"
-                          placeholder="Новый пароль пользователя">
-                      </div>
-                      @error('password')
-                        <div class="text-danger">{{ $message }}</div>
-                      @enderror
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-1 col-form-label">Роль</label>
-                    <div class="col-sm-10">
-                      <div>
-                        <select class="select2 col-3" name="role" id="">
-                          @foreach ($roles as $id => $role)
-                            <option @selected(old('role') ?? $user->role == $id)
-                              value="{{ $id }}">{{ $role }}</option>
-                          @endforeach
-                        </select>
-                      </div>
-                      @error('role')
-                        <div class="text-danger">{{ $message }}</div>
-                      @enderror
-                    </div>
-                  </div>
-                  <input type="hidden" name="user_id" value="{{ $user->id }}">
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-info">Изменить</button>
-                  <a href="{{ route('admin.users.index') }}"
-                    class="btn btn-default float-right">Назад</a>
-                </div>
-                <!-- /.card-footer -->
+                  <!-- /.card-footer -->
               </form>
             </div>
           </div>
