@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
-  Route::get('/', 'IndexController')->name('main.index');
-  Route::get('/{post}', 'ShowController')->name('main.show');
-  Route::get('/about', fn() => view('main.about'))->name('main.about');
+  Route::get('/main', 'IndexController')->name('main.index');
+  Route::get('/main/about', fn() => view('main.about'))->name('main.about');
+  Route::get('/main/{post}', 'ShowController')->name('main.show');
 });
 
 Route::name('personal.')->prefix('personal')->namespace('App\Http\Controllers\Personal')->middleware(['auth', 'verified'])->group(function () {
@@ -92,3 +92,4 @@ Route::name('admin.')->prefix('admin')->namespace('App\Http\Controllers\Admin')-
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/welcome', fn() => view('welcome'))->name('welcome');

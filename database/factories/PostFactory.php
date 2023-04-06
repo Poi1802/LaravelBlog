@@ -21,7 +21,7 @@ class PostFactory extends Factory
     return [
       'user_id' => User::get()->random()->id,
       'title' => fake()->sentence(),
-      'content' => fake()->text(),
+      'content' => fake()->text(1500),
       'main_img' => fake()->imageUrl(),
       'preview_img' => fake()->imageUrl(),
       'category_id' => Category::get()->random()->id

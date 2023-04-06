@@ -12,7 +12,8 @@ class IndexController extends Controller
   {
     $postsMain = Post::paginate(3);
     $postsRandom = Post::all()->diff($postsMain);
-
-    return view('main.index', compact('postsMain', 'postsRandom'));
+    $postsPopular = Post::withCount('likes')->orderByDesc('likes_count')->get()->take(3);
+    // dd($postsPopular);
+    return view('main.index', compact('postsMain', 'postsRandom', 'postsPopular'));
   }
 }
