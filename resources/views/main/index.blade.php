@@ -28,6 +28,7 @@
             </div>
           @endforeach
         </div>
+        <div class="">{{ $postsMain->links() }}</div>
       </section>
       <div class="row">
         <div class="col-md-8">
