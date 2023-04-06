@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
-  Route::get('/main', 'IndexController')->name('main.index');
-  Route::get('/main/about', fn() => view('main.about'))->name('main.about');
-  Route::get('/main/{post}', 'ShowController')->name('main.show');
+Route::name('main.')->prefix('main')->namespace('App\Http\Controllers\Main')->group(function () {
+  Route::get('/about', fn() => view('main.about'))->name('about');
+  Route::name('posts.')->prefix('posts')->namespace('Post')->group(function () {
+    Route::get('/', 'IndexController')->name('index');
+    Route::get('/{post}', 'ShowController')->name('show');
+  });
 });
 
 Route::name('personal.')->prefix('personal')->namespace('App\Http\Controllers\Personal')->middleware(['auth', 'verified'])->group(function () {

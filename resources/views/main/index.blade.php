@@ -3,13 +3,13 @@
 @section('content')
   <main class="blog">
     <div class="container">
-      <h1 class="edica-page-title" data-aos="fade-up">Blog</h1>
+      <h1 class="edica-page-title" data-aos="fade-up">Жека Блог</h1>
       <section class="featured-posts-section">
         <div class="row">
           @foreach ($postsMain as $post)
             <div class="col-md-4 fetured-post blog-post" data-aos="fade-right">
               <div class="blog-post-thumbnail-wrapper">
-                <a href="{{ route('main.show', $post->id) }}">
+                <a href="{{ route('main.posts.show', $post->id) }}">
                   <img src="{{ asset($post->preview_img) }}" alt="blog post">
                 </a>
               </div>
@@ -22,13 +22,14 @@
                   </a>
                 </div>
               </div>
-              <a href="{{ route('main.show', $post->id) }}" class="blog-post-permalink">
+              <a href="{{ route('main.posts.show', $post->id) }}"
+                class="blog-post-permalink">
                 <h6 class="blog-post-title">{{ $post->title }}</h6>
               </a>
             </div>
           @endforeach
         </div>
-        <div class="mb-5">{{ $postsMain->links() }}</div>
+        <div class="mb-5" style="margin-top: -90px">{{ $postsMain->links() }}</div>
       </section>
       <div class="row">
         <div class="col-md-8">
@@ -72,11 +73,11 @@
                 <div class="carousel-inner" role="listbox">
                   @foreach ($postsPopular as $idx => $post)
                     <div class="carousel-item {{ $idx === 0 ? 'active' : '' }}">
-                      <a href="{{ route('main.show', $post->id) }}"><img
+                      <a href="{{ route('main.posts.show', $post->id) }}"><img
                           src="{{ $post->preview_img }}" alt="First slide"></a>
                       <figcaption class="post-title">
                         <a
-                          href="{{ route('main.show', $post->id) }}">{{ $post->title }}</a>
+                          href="{{ route('main.posts.show', $post->id) }}">{{ $post->title }}</a>
                       </figcaption>
                     </div>
                   @endforeach

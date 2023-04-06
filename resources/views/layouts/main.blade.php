@@ -23,7 +23,7 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand font-bold text-info" style="font-weight: 900"
-          href="{{ route('main.index') }}">EugenBlog</a>
+          href="{{ route('main.posts.index') }}">EugenBlog</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
           data-target="#edicaMainNav" aria-controls="collapsibleNavId"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="edicaMainNav">
           <ul class="navbar-nav flex-grow-1 text-center mx-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="{{ route('main.index') }}">Главная<span
+              <a class="nav-link" href="{{ route('main.posts.index') }}">Главная<span
                   class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -51,7 +51,7 @@
           @else
             <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="" id="blogDropdown"
+                <a class="nav-link dropdown" href="" id="blogDropdown"
                   data-toggle="dropdown" aria-haspopup="true"
                   aria-expanded="false">{{ Auth::user()->name }}</a>
                 <div class="dropdown-menu" aria-labelledby="blogDropdown">
@@ -121,7 +121,7 @@
   <script src="{{ asset('assets/vendors/popper.js/popper.min.js') }} "></script>
   <script src="{{ asset('assets/vendors/bootstrap/dist/js/bootstrap.min.js') }} "></script>
   <script src="{{ asset('assets/vendors/aos/aos.js') }} "></script>
-  <script src="{{ asset('assets/js/main.js') }} "></script>
+  <script src="{{ asset('assets/js/main.posts.js') }} "></script>
   <script>
     AOS.init({
       duration: 1000
