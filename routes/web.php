@@ -14,9 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 Route::name('main.')->prefix('main')->namespace('App\Http\Controllers\Main')->group(function () {
   Route::get('/about', fn() => view('main.about'))->name('about');
+
   Route::name('posts.')->prefix('posts')->namespace('Post')->group(function () {
     Route::get('/', 'IndexController')->name('index');
     Route::get('/{post}', 'ShowController')->name('show');
+
+    Route::name('comments.')->prefix('{post}/comments')->namespace('Comment')->group(function () {
+      Route::post('/', 'StoreController')->name('store');
+    });
+
+    Route::name('likes.')->prefix('{post}/likes')->namespace('Like')->group(function () {
+      Route::post('/', 'StoreController')->name('store');
+    });
   });
 });
 

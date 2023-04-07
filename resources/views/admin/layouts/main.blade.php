@@ -50,7 +50,7 @@
                   class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('main.index') }}">На
+              <a class="nav-link" href="{{ route('main.posts.index') }}">На
                 главную</a>
             </li>
           </div>

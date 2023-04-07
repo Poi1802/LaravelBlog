@@ -52,7 +52,7 @@
                         <td>{{ $post->title }}</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <a href="{{ route('personal.posts.show', $post->id) }}"
+                            <a href="{{ route('main.posts.show', $post->id) }}"
                               class="mr-4 edit_pen" style="font-size: 20px">
                               <i class="fa-regular fa-eye"></i>
                             </a>

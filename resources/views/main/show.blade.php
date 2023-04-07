@@ -5,16 +5,35 @@
   <main class="blog-post">
     <div class="container">
       <h1 class="edica-page-title" data-aos="fade-up">{{ $post->title }}</h1>
-      <p class="edica-blog-post-meta" data-aos="fade-up" data-aos-delay="200">Написал
-        {{ $post->user->name }} • {{ $date->translatedFormat('F') }} {{ $date->day }},
-        {{ $date->year }} • {{ $date->format('H:i') }} •
-        {{ $post->category->name }} •
-        {{ $post->comments->count() }}
-        {{ Lang::choice('Комментарий|Комментариев', $post->comments->count()) }}
-      </p>
+
+      <div class="edica-blog-post-meta d-flex" data-aos="fade-up" data-aos-delay="200">
+        <div class="mx-auto d-flex align-items-center">
+          Написал
+          {{ $post->user->name }} • {{ $date->translatedFormat('F') }} {{ $date->day }},
+          {{ $date->year }} • {{ $date->format('H:i') }} •
+          {{ $post->category->name }} •
+          {{ $post->comments->count() }}
+          {{ Lang::choice('Комментарий|Комментариев', $post->comments->count()) }}
+          <h6 class="likes d-flex ml-2 m-0">
+            <form action="{{ route('main.posts.likes.store', $post->id) }}" method="post">
+              @csrf
+              <button class="text-danger border-0 bg-white">
+                @auth
+                  <i
+                    class="fa{{ Auth::user()->likedPosts->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                @endauth
+                @guest
+                  <i class="far fa-heart"></i>
+                @endguest
+              </button>
+            </form>
+            {{ $post->likes->count() }}
+            </h5>
+        </div>
+      </div>
       <section class="blog-post-featured-img" data-aos="fade-up" data-aos-delay="300">
-        <img src="{{ $post->main_img }}" alt="featured image" class="w-100"
-          style="max-height: 320px; object-fit: contain">
+        <img src="{{ asset('storage/' . $post->main_img) }}" alt="featured image"
+          class="w-100" style="max-height: 320px; object-fit: contain">
       </section>
       <section class="post-content">
         <div class="row">
@@ -74,21 +93,32 @@
                 </div>
               @endforeach
             </div>
-            <form action="/" method="post">
-              <div class="row">
-                <div class="form-group col-12" data-aos="fade-up">
-                  <label for="comment" class="sr-only">Введите комментарий</label>
-                  <textarea name="comment" id="comment" class="form-control"
-                    placeholder="Введите комментарий" rows="10"></textarea>
+            @auth
+              <form action="{{ route('main.posts.comments.store', $post->id) }}"
+                method="post">
+                @csrf
+                <div class="row">
+                  <div class="form-group col-12" data-aos="fade-up">
+                    <label for="comment" class="sr-only">Введите комментарий</label>
+                    <textarea name="comment" id="comment" class="form-control"
+                      placeholder="Введите комментарий" rows="10"></textarea>
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-12" data-aos="fade-up">
-                  <input type="submit" value="Оставить комментарий"
-                    class="btn btn-warning">
+                <div class="row">
+                  <div class="col-12" data-aos="fade-up">
+                    <input type="submit" value="Оставить комментарий"
+                      class="btn btn-warning">
+                  </div>
                 </div>
+              </form>
+            @endauth
+            @guest
+              <div class="d-flex pb-4">
+                <a href="{{ route('login') }}" class="btn mx-auto btn-warning">Войдите прежде
+                  чем
+                  оставлять комментарии</a>
               </div>
-            </form>
+            @endguest
           </section>
         </div>
       </div>

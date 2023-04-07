@@ -10,16 +10,26 @@
             <div class="col-md-4 fetured-post blog-post" data-aos="fade-right">
               <div class="blog-post-thumbnail-wrapper">
                 <a href="{{ route('main.posts.show', $post->id) }}">
-                  <img src="{{ asset($post->preview_img) }}" alt="blog post">
+                  <img src="{{ asset('storage/' . $post->preview_img) }}" alt="blog post">
                 </a>
               </div>
               <div class="d-flex justify-content-between">
                 <a href="" class="blog-post-category">{{ $post->category->name }}</a>
-                <div class="likes">
+                <div class="likes d-flex">
                   {{ $post->likes->count() }}
-                  <a href="" class="text-danger">
-                    <i class="far fa-heart"></i>
-                  </a>
+                  <form action="{{ route('main.posts.likes.store', $post->id) }}"
+                    method="post">
+                    @csrf
+                    <button class="text-danger border-0 bg-white">
+                      @auth
+                        <i
+                          class="fa{{ Auth::user()->likedPosts->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                      @endauth
+                      @guest
+                        <i class="far fa-heart"></i>
+                      @endguest
+                    </button>
+                  </form>
                 </div>
               </div>
               <a href="{{ route('main.posts.show', $post->id) }}"
@@ -39,17 +49,30 @@
                 <div class="col-md-6 blog-post" data-aos="fade-up">
                   <div class="blog-post-thumbnail-wrapper">
                     <a href="">
-                      <img src="{{ asset($post->preview_img) }}" alt="blog post">
+                      <img src="{{ asset('storage/' . $post->preview_img) }}"
+                        alt="blog post">
                     </a>
                   </div>
                   <div class="d-flex justify-content-between">
                     <a href=""
                       class="blog-post-category">{{ $post->category->name }}</a>
                     <div class="likes">
-                      {{ $post->likes->count() }}
-                      <a href="" class="text-danger">
-                        <i class="far fa-heart"></i>
-                      </a>
+                      <div class="likes d-flex">
+                        {{ $post->likes->count() }}
+                        <form action="{{ route('main.posts.likes.store', $post->id) }}"
+                          method="post">
+                          @csrf
+                          <button class="text-danger border-0 bg-white">
+                            @auth
+                              <i
+                                class="fa{{ Auth::user()->likedPosts->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                            @endauth
+                            @guest
+                              <i class="far fa-heart"></i>
+                            @endguest
+                          </button>
+                        </form>
+                      </div>
                     </div>
                   </div>
                   <a href="#!" class="blog-post-permalink">
