@@ -11,8 +11,7 @@ class IndexController extends Controller
   public function __invoke()
   {
     $likedPosts = Auth::user()->likedPosts;
-    // Post::find(1)->likes()->attach([1, 2]);
-    $postLikes = Post::find(1)->likes;
-    return view('personal.likes.index', compact('likedPosts', 'postLikes'));
+
+    return view('personal.likes.index', compact('likedPosts'));
   }
 }

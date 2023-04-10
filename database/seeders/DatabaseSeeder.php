@@ -19,27 +19,27 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
-    \App\Models\User::factory()->create([
-      'name' => 'Eugen',
+    User::factory()->create([
+      'name' => 'Евгений',
       'email' => 'evgen.bazhenov.2002@gmail.com',
       'password' => Hash::make('Fyufhcr123'),
       'email_verified_at' => now(),
       'role' => 0
     ]);
 
-    $users = \App\Models\User::factory(10)->create();
+    // $users = User::factory(10)->create();
 
-    Category::factory(10)->create();
-    $tags = Tag::factory(10)->create();
-    $posts = Post::factory(20)->create();
-    Comment::factory(40)->create();
+    // Category::factory(10)->create();
+    // $tags = Tag::factory(10)->create();
+    // $posts = Post::factory(20)->create();
+    // Comment::factory(40)->create();
 
-    foreach ($posts as $post) {
-      $tagIds = $tags->random(fake()->numberBetween(1, 5))->pluck('id');
-      $userIds = $users->random(fake()->numberBetween(1, 10))->pluck('id');
+    // foreach ($posts as $post) {
+    //   $tagIds = $tags->random(fake()->numberBetween(1, 5))->pluck('id');
+    //   $userIds = $users->random(fake()->numberBetween(1, 10))->pluck('id');
 
-      $post->tags()->attach($tagIds);
-      $post->likes()->attach($userIds);
-    }
+    //   $post->tags()->attach($tagIds);
+    //   $post->likes()->attach($userIds);
+    // }
   }
 }

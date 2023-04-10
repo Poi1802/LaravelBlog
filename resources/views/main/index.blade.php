@@ -45,10 +45,10 @@
         <div class="col-md-8">
           <section>
             <div class="row blog-post-row">
-              @foreach ($postsRandom->random(6) as $post)
+              @foreach ($postsRandom->take(6) as $post)
                 <div class="col-md-6 blog-post" data-aos="fade-up">
                   <div class="blog-post-thumbnail-wrapper">
-                    <a href="">
+                    <a href="{{ route('main.posts.show', $post->id) }}">
                       <img src="{{ asset('storage/' . $post->preview_img) }}"
                         alt="blog post">
                     </a>
@@ -75,7 +75,8 @@
                       </div>
                     </div>
                   </div>
-                  <a href="#!" class="blog-post-permalink">
+                  <a href="{{ route('main.posts.show', $post->id) }}"
+                    class="blog-post-permalink">
                     <h6 class="blog-post-title">{{ $post->title }}</h6>
                   </a>
                 </div>
@@ -96,8 +97,10 @@
                 <div class="carousel-inner" role="listbox">
                   @foreach ($postsPopular as $idx => $post)
                     <div class="carousel-item {{ $idx === 0 ? 'active' : '' }}">
-                      <a href="{{ route('main.posts.show', $post->id) }}"><img
-                          src="{{ $post->preview_img }}" alt="First slide"></a>
+                      <a href="{{ route('main.posts.show', $post->id) }}">
+                        <img src="{{ asset('storage/' . $post->preview_img) }}"
+                          alt="First slide">
+                      </a>
                       <figcaption class="post-title">
                         <a
                           href="{{ route('main.posts.show', $post->id) }}">{{ $post->title }}</a>

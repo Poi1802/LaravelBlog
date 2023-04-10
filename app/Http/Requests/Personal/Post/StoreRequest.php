@@ -26,8 +26,6 @@ class StoreRequest extends FormRequest
       'title' => 'required|string',
       'content' => 'required|string',
       'category_id' => 'required|numeric|exists:categories,id',
-      'tag_ids' => 'required|array',
-      'tag_ids.*' => 'required|integer|exists:tags,id',
       'preview_img' => 'required|file',
       'main_img' => 'required|file',
     ];
@@ -43,7 +41,6 @@ class StoreRequest extends FormRequest
       'category_id.required' => 'Обязательное поле',
       'category_id.numeric' => 'Может быть толькo строкой',
       'category_id.exists' => 'Такой категории нет',
-      'tag_ids.required' => 'Обязательное поле',
       'preview_img.required' => 'Обязательное поле',
       'preview_img.string' => 'Может быть толькo файлом',
       'main_img.required' => 'Обязательное поле',
