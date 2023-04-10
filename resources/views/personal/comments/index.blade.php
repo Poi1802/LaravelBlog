@@ -49,7 +49,8 @@
                         <td>{{ $comment->comment }}</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <a href="" class="mr-4 edit_pen" style="font-size: 20px">
+                            <a href="{{ route('main.posts.show', $comment->post_id) }}"
+                              class="mr-4 edit_pen" style="font-size: 20px">
                               <i class="fa-regular fa-eye"></i>
                             </a>
                             <a href="{{ route('personal.comments.edit', $comment->id) }}"

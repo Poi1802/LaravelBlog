@@ -49,7 +49,8 @@
                         <td>{{ $post->title }}</td>
                         <td>
                           <div class="d-flex justify-content-center">
-                            <a href="" class="mr-4 edit_pen" style="font-size: 20px">
+                            <a href="{{ route('main.posts.show', $post->id) }}"
+                              class="mr-4 edit_pen" style="font-size: 20px">
                               <i class="fa-regular fa-eye"></i>
                             </a>
                             <form action="{{ route('personal.likes.destroy', $post->id) }}"
