@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', 'App\Http\Controllers\Main\Post\IndexController')->name('main.posts.index');
+
 Route::name('main.')->prefix('main')->namespace('App\Http\Controllers\Main')->group(function () {
   Route::get('/about', fn() => view('main.about'))->name('about');
 
   Route::name('posts.')->prefix('posts')->namespace('Post')->group(function () {
-    Route::get('/', 'IndexController')->name('index');
     Route::get('/{post}', 'ShowController')->name('show');
 
     Route::name('comments.')->prefix('{post}/comments')->namespace('Comment')->group(function () {
@@ -29,6 +30,7 @@ Route::name('main.')->prefix('main')->namespace('App\Http\Controllers\Main')->gr
   });
 });
 
+// Personal panel
 Route::name('personal.')->prefix('personal')->namespace('App\Http\Controllers\Personal')->middleware(['auth', 'verified'])->group(function () {
   Route::group(['namespace' => 'Main'], function () {
     Route::get('/', 'IndexController')->name('main.index');
