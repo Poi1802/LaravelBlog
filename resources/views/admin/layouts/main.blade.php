@@ -26,6 +26,7 @@
   <!-- Daterange picker -->
   <link rel="stylesheet"
     href="{{ asset('plugins/daterangepicker/daterangepicker.css') }} ">
+
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

@@ -14,7 +14,10 @@
   <script src="{{ asset('assets/vendors/jquery/jquery.min.js') }} "></script>
   <script src="{{ asset('assets/js/loader.js') }} "></script>
 
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+  <link rel="stylesheet" href="/public/build/assets/app-5ed85d04.css">
+  <link rel="stylesheet" href="/public/build/assets/app-5ed85d04.js">
+
 </head>
 
 <body>
